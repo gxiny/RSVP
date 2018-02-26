@@ -1,0 +1,52 @@
+{% extends 'rsvp/base.html' %}
+
+{% block content %}
+    <div class="event_detail">
+        <h3>{{ event.title }}</h3>
+        {% if event.time %}
+            <div class="time">
+                <h5>Event time : {{ event.time }}</h5>
+            </div>
+        {% endif %}
+        {% if event.address %}
+            <div class="address">
+                <h5>Event address : {{ event.address }}</h5>
+            </div>
+        {% endif %}
+    
+        {% if event.description %}
+            <div class="description">
+                <h5>Event description : </h5><h5>{{ event.description|linebreaksbr }}</h5>
+            </div>
+        {% endif %}
+        <div class="publish_date">
+            <h5>Publish date : {{ event.publish_date }}</h5>
+        </div>
+        <div class="update_date">
+            <h5>Update date : {{ event.update }}</h5>
+        </div>
+        <h3>Question List :</h3>
+        {% for question in questionlist %}
+            <div class="questions">  
+                <h4><a href="{% url 'question_detail' event_pk=event.pk question_pk=question.pk %}">{{ question.description }}</a></h4>
+            </div>
+        {% endfor %}
+        
+       {% load guardian_tags %}
+        {% get_obj_perms request.user for event as "event_perms" %}
+    
+        {% if "change_event" in event_perms %}
+            <a href="{% url 'event_edit' pk=event.pk %}">Edit</a>
+        {% endif %}
+        {% if "delete_event" in event_perms %}
+            <a href="{% url 'event_delete' pk=event.pk %}">Delete</a>
+        {% endif %}
+        {% if not "delete_event" in event_perms %}
+            {% if event.plus_one %}
+                <h4><a href="{% url 'plusone' event_pk=event.pk  %}">Plus one or more</a></h4>
+            {% endif %}
+            <h3><a href="{% url 'rsvp' event_pk=event.pk  %}">RSVP</a></h3>
+        {% endif %}   
+        
+    </div>
+{% endblock %}

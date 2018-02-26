@@ -1,0 +1,15 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+        <div class="My Event">
+            <h1><a href="">My Event</a></h1>
+        </div>
+        {% for event in myevents %}
+            <div class="my_event">
+                <h4><a href="{% url 'event_detail' pk=event.pk %}">{{ event.title }}</a></h4>
+                <p>{{ event.time }}</p>
+                <p>{{ event.description|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock %}
+
+

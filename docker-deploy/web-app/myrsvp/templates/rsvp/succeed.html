@@ -1,0 +1,9 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+        <div>
+            <h3>Succeed!</h3>
+        </div>  
+        <div>
+            <h3><a href="{% url 'event_detail' pk=event.pk %}">Back to event detail page</a></h3>
+        </div>    
+    {% endblock %}

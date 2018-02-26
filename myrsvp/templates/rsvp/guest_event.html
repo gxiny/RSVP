@@ -1,0 +1,13 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+        <div class="Guest Event">
+            <h1><a href="">Guest Event</a></h1>
+        </div>
+        {% for event in guestevents %}
+            <div class="guest_event">
+                <h4><a href="{% url 'event_detail' pk=event.pk %}">{{ event.title }}</a></h4>
+                <p>{{ event.publish_date }}</p>
+                <p>{{ event.description|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock %}

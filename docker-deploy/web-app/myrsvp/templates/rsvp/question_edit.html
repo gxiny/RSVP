@@ -1,0 +1,13 @@
+{% extends 'rsvp/base.html' %}
+
+    {% block content %}
+        <h3>Question Edit</h3>
+        <!--{% if wrong_email %}
+        <h3>{{wrong_email}}</h3>
+        {% endif %}-->
+        <form method="POST" class="question-form">
+        {% csrf_token %}
+        {{ question_form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    {% endblock %}

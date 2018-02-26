@@ -1,0 +1,43 @@
+{% extends 'rsvp/signbase.html' %}
+
+{% block content %}
+    <div class = "response">
+        <h1>Response</h1>
+    </div>
+    <div class="question_detail">
+        <h3>{{ question.description }}</h3>
+    </div>
+     {% if question.question_type %}
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Save</button>
+        </form>
+    {% endif %}
+    {% if not question.question_type %}
+        {% for choice in choicelist %}
+        <div class = "choice">
+            {{choice}} : <input type = "radio" name = choice/>
+        </div>
+        {% endfor %}
+        <button type="button" onclick ="location.href='http://vcm-203.vm.duke.edu:8000/rsvp/event/myevent'">Save</button>      
+    {% endif %}   
+    <div>
+        <h3></h3>
+    </div>
+    <div>
+        {% load guardian_tags %}
+        {% get_obj_perms request.user for question as "question_perms" %}
+        
+        {% if "change_question" in question_perms %}
+            <a href="{% url 'question_edit' pk=question.pk %}">Edit</a>
+        {% endif %}
+        {% if "delete_question" in question_perms %}
+            <a href="{% url 'question_delete' pk=question.pk %}">Delete</a>
+        {% endif %}
+        {% if "change_question" in question_perms %}
+            <a href="{% url 'vendor_view' pk=question.pk %}">Answers</a> 
+        {% endif %}
+    </div>
+    
+{% endblock %}   

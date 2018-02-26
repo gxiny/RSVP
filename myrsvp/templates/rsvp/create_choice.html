@@ -1,0 +1,8 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %}
+          <h3>New Choice</h3>
+        <form method="POST" class="Choice-form">{% csrf_token %}
+            {{ choice_form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    {% endblock %}

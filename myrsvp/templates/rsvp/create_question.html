@@ -1,0 +1,11 @@
+{% extends 'rsvp/base.html' %}
+
+    {% block content %}
+          <h3>New Question</h3>
+        <form method="POST" class="Question-form">
+            {% csrf_token %}
+            {{ question_form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+        <button type="button" onclick ="location.href='http://vcm-203.vm.duke.edu:8000/rsvp/home'" >No more question</button> 
+    {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+        <div>
+            <h2>{{wrong_message}}</h2> 
+        </div>
+    {% if user.is_authenticated %} 
+    <div>   
+    <h3><a href="{% url 'homepage' %}">back to homepage</a></h3>
+    </div>
+    <div>
+    <h3><a href="{% url 'myevent' %}">back to my event</a></h3>
+    </div>
+    <div>
+    <h3><a href="{% url 'vendorevent' %}">back to vendor event</a></h3>
+    </div>
+    <div>
+    <h3><a href="{% url 'guestevent' %}">back to guest event</a></h3>    
+    </div>
+     {% else %}
+       <h3><a href="{% url 'login' %}">login</a></h3>
+     {% endif %}
+    {% endblock %}

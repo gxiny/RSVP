@@ -1,0 +1,22 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+        <div>
+            <h2>{{wrong_message}}</h2> 
+        </div>
+    {% if user.is_authenticated %} 
+    <div>   
+    <h3><a href="http://vcm-203.vm.duke.edu:8000/rsvp/home/">back to homepage</a></h3>
+    </div>
+    <div>
+    <h3><a href="http://vcm-203.vm.duke.edu:8000/rsvp/event/myevent/">back to my event</a></h3>
+    </div>
+    <div>
+    <h3><a href="http://vcm-203.vm.duke.edu:8000/rsvp/event/vendorevent/">back to vendor event</a></h3>
+    </div>
+    <div>
+    <h3><a href="http://vcm-203.vm.duke.edu:8000/rsvp/event/guestevent/">back to guest event</a></h3>    
+    </div>
+     {% else %}
+       <h3><a href="http://vcm-203.vm.duke.edu:8000/rsvp/login/">login</a></h3>
+     {% endif %}
+    {% endblock %}

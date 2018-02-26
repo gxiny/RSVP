@@ -1,0 +1,11 @@
+{% extends 'rsvp/signbase.html' %}
+
+    {% block content %}
+    <h1>login</h1>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{uf.as_p}}
+          <button type="submit">Log in</button>
+        </form>
+    <a href="http://vcm-203.vm.duke.edu:8000/rsvp/regist/">regist</a>
+    {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'rsvp/base.html' %}
+
+{% block content %}
+    <div class="question_detail">
+        <h3>{{ question.description }}</h3>
+        <h3>Answers :</h3>
+        {% for answer in allanswers %}
+            <h3>{{ answer.answer }}</h3>
+        {% endfor %}
+    </div>
+{% endblock %}

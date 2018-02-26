@@ -1,0 +1,9 @@
+Dangers
+When we built our RSVP system, we used several ways to try to keep it safe, although it is still vulnerable and fragile. We used django¡¯s built in authentication system which stores users¡¯ password using hash and salt, redirected potential problems to wrong page and used csrf token and login_required tag. 
+But there are still many safety problems:
+1.???? Our website has no firewall so any small injection can ruin it.
+2.???? We used many jump terms and have many htmls, if one of the htmls break, others reply on it breaks too. And those so many redirects are also not user friendly enough and easily for hackers to hack in and do evil things. If we have more time, we plan to make better strategies of how pages redirect and combine more things on one page rather than let it jump randomly.
+3.???? In order to obtain and add guest and vendor, we require users to type in their email addresses in the format of ¡®;¡¯, our system can only identity some simple format errors, like it is not a valid email address, but if they type in some other things in email format, we cannot discover that.
+4.???? We identify the roles of owners, vendors and guests using email address, so when owners create event, if she does not type in her own email or type a wrong email address she will not be the owner and cannot delete this event because we only allow owners to delete events which is really bad.
+5.???? We cannot use HTTPS, and HTTP is not very safe.
+6.???? We cannot predict the traffic if several users log in and do many things at the same time.

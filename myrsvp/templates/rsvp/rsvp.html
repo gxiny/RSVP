@@ -1,0 +1,9 @@
+{% extends 'rsvp/signbase.html' %}
+    {% block content %}
+    <h1>Do you plan to attend this event</h1>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">save</button>
+        </form>
+    {% endblock %}

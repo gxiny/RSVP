@@ -1,0 +1,27 @@
+{% extends 'rsvp/base.html' %}
+    {% block content %} 
+    {% if user.is_authenticated %}
+        <div>
+            <h3>{{ username }}  Welcome!</h3>
+        </div>
+        <div>
+          <h3><a href="{% url 'create_event' %}">Create Event</a></h3>
+        </div>
+        <div>
+          <h3><a href="{% url 'myevent' %}">My Event</a></h3>
+        </div>
+        <div>
+          <h3><a href="{% url 'vendorevent' %}">Vendor Event</a></h3>
+        </div>
+        <div>
+          <h3><a href="{% url 'guestevent' %}">Guest Event</a></h3>
+        </div>
+        <div>
+          <h3><a href="{% url 'logout' %}">Log Out</a></h3>
+        </div>
+    {% else %}
+        <div>
+            <button class = "btn btn-default"><a href = "{% url 'login' %}">log in</a></button>
+        </div>
+    {% endif %}
+    {% endblock %}
